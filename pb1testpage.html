@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour the Hoover Dam in Las Vegas</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ----- RESET & BASE ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #301175;
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ----- GLOW EFFECT FOR HEADINGS ----- */
+        .glowing,
+        .glowing .elementor-heading-title,
+        .elementor-heading-title.glowing {
+            text-stroke: 2px #E33EE1;
+            -webkit-text-stroke: 2px #E33EE1;
+            text-shadow: 0px 4px 4px rgba(227, 62, 225, 0.8), 0px -3px 5px rgba(227, 62, 225, 0.8);
+            transform: translateZ(0);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        /* ----- BUTTONS (steady gold glow) ----- */
+        .btn-glow {
+            display: inline-block;
+            padding: 12px 30px;
+            border: none;
+            background: #FDE65B;
+            color: #000;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 40px;
+            transition: all 0.3s ease;
+            box-shadow: 0px 0px 25px 5px rgba(255, 215, 0, 0.6);
+            cursor: pointer;
+        }
+
+        .btn-glow:hover {
+            background: #E33EE1;
+            color: #fff;
+            box-shadow: 0px 0px 35px 10px rgba(255, 215, 0, 0.9);
+            transform: scale(1.05);
+        }
+
+        /* ----- HERO SECTION ----- */
+        .hero {
+            background: #301175;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #ddd;
+            font-size: 18px;
+            margin-bottom: -30px;
+        }
+
+        /* ----- TOUR SECTIONS ----- */
+        .tour-section {
+            padding: 60px 0;
+            background: #301175;
+            border-bottom: 1px solid #5a2ca0;
+        }
+
+        .section-grid {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .section-grid.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .section-image {
+            flex: 1;
+        }
+
+        /* Image frame */
+        .image-frame {
+            margin: 0;
+            border: 12px solid transparent;
+            border-image: linear-gradient(45deg, #4074FF, #2B38FF, #FFABFF, #4074FF, #ED49FF, #BC0FF8, #AB28F5, #DA83FE);
+            border-image-slice: 1;
+            padding: 10px;
+            background: #301175;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Caption overlay */
+        .elementor-widget-image {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .elementor-widget-image figure.wp-caption {
+            position: relative;
+            display: inline-block;
+            margin: 0;
+            width: 100%;
+        }
+
+        .elementor-widget-image figcaption.widget-image-caption {
+            opacity: 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 15px;
+            transition: opacity 1.5s ease, transform 1.5s ease;
+            transform: translateY(10px);
+            margin: 0 !important;
+            font-size: 16px;
+        }
+
+        .elementor-widget-image:hover figcaption.widget-image-caption {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        @media (max-width: 767px) {
+            .elementor-widget-image.mobile-visible figcaption.widget-image-caption {
+                opacity: 1;
+                transform: translateY(0);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+                transition-delay: 0.1s;
+            }
+        }
+
+        .section-content {
+            flex: 1;
+        }
+
+        .section-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .section-content p {
+            color: #ddd;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .section-grid, .section-grid.reverse {
+                flex-direction: column;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p,
+            .section-content p {
+                font-size: 17px;
+            }
+        }
+
+        /* ----- RESERVATION SECTION (rebuilt from JSON) ----- */
+        .las-vegas-reservation {
+            position: relative;
+            width: 100%;
+            padding: 55px 0 14px 0;  /* desktop padding from JSON */
+            overflow: hidden;
+            background-color: transparent; /* overlay handles background */
+        }
+
+        .las-vegas-reservation .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://lasvegaspartybuses.com/wp-content/uploads/2022/09/LV-Party-Bus-Image.png');
+            background-position: center left;
+            background-repeat: no-repeat;
+            background-size: cover;
+            opacity: 0.28;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .las-vegas-reservation .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .reservation-row {
+            display: flex;
+            align-items: center;
+            gap: 0; /* no gap, columns touch */
+        }
+
+        .reservation-col-left {
+            width: 44%; /* matches _inline_size 43.948% ~44% */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reservation-col-right {
+            width: 56%; /* matches _inline_size 56.052% */
+            background-image: url('https://lasvegaspartybuses.com/wp-content/uploads/2022/09/LV-Party-Bus-Image.png');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            min-height: 300px; /* ensures visibility */
+            padding: 40px 0 0 49px; /* desktop padding from JSON */
+            margin: 0;
+        }
+
+        /* Left column inner content */
+        .reservation-content {
+            text-align: center;
+            width: 100%;
+        }
+
+        .reservation-content h2 {
+            font-family: 'Oswald', sans-serif; /* fallback for Neon Regular */
+            font-size: 65px;
+            font-weight: 400;
+            line-height: 86px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 0 0 7px #fff, 0 0 10px #fff; /* neon white glow */
+        }
+
+        .reservation-content h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 34px;
+            font-weight: 400;
+            line-height: 51px;
+            color: #fff;
+            margin-bottom: 30px;
+            margin-top: -10px; /* from _margin top -10 */
+        }
+
+        .reservation-content .btn-reservation {
+            display: inline-block;
+            padding: 16px 45px;
+            background-color: #FDE65B;
+            color: #000;
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0px 0px 25px 5px rgba(255, 215, 0, 0.6); /* gold glow */
+        }
+
+        .reservation-content .btn-reservation:hover {
+            background-color: #E33EE1;
+            color: #fff;
+            box-shadow: 0px 0px 35px 10px rgba(255, 215, 0, 0.9);
+            transform: scale(1.05);
+        }
+
+        /* Tablet and mobile overrides from JSON */
+        @media (max-width: 1024px) { /* tablet */
+            .las-vegas-reservation {
+                padding: 70px 30px 60px 30px; /* from padding_tablet */
+            }
+
+            .reservation-row {
+                flex-direction: column-reverse; /* reverse order: image on top */
+            }
+
+            .reservation-col-left,
+            .reservation-col-right {
+                width: 100%;
+            }
+
+            .reservation-col-right {
+                padding: 0; /* reset */
+                min-height: 250px;
+                margin: 0 0 30px 0; /* margin_tablet on column? actually column had margin 0, but we add space */
+            }
+
+            .reservation-content h2 {
+                font-size: 40px; /* from mobile, but tablet not specified; we use mobile size */
+                line-height: 65px;
+            }
+
+            .reservation-content h3 {
+                font-size: 25px; /* tablet size from JSON typography_font_size_tablet: 25 */
+                line-height: 31px;
+                margin-top: 10px; /* from _margin_tablet top 10 */
+            }
+        }
+
+        @media (max-width: 767px) { /* mobile */
+            .las-vegas-reservation {
+                padding: 30px 20px 50px 20px; /* from padding_mobile */
+            }
+
+            .reservation-col-right {
+                min-height: 200px;
+                margin-top: 30px; /* margin_mobile on column was 30 top */
+            }
+
+            .reservation-content h2 {
+                font-size: 30px; /* mobile size from JSON */
+                line-height: 65px;
+            }
+
+            .reservation-content h3 {
+                font-size: 21px; /* mobile size */
+                line-height: 27px;
+                margin-top: 0;
+            }
+
+            .reservation-content .btn-reservation {
+                padding: 12px 35px; /* from text_padding_mobile */
+                font-size: 17px;
+            }
+        }
+
+        /* ----- FAQ SECTION (black background, white text) ----- */
+        .faq-section {
+            background: #000000;
+            padding: 60px 0;
+        }
+
+        .faq-section h2 {
+            font-size: 34px;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .faq-item h4 {
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 10px;
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .faq-divider {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #E33EE1, transparent);
+            margin: 10px 0 20px;
+        }
+
+        .faq-item p {
+            color: #fff;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .faq-section h2 {
+                font-size: 28px;
+            }
+        }
+
+        /* ----- FLOATING CONTACT BUTTONS ----- */
+        .floating-buttons {
+            position: fixed;
+            top: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+            display: flex;
+            gap: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .floating-buttons.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .floating-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: #2F1173;
+            border: 1px solid #fff;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.2s;
+        }
+
+        .floating-btn svg {
+            width: 40px;
+            height: 40px;
+            fill: currentColor;
+        }
+
+        .floating-btn:hover {
+            background: #1D0A56;
+            transform: translateY(-2px);
+            box-shadow: 0 0 15px #fff;
+        }
+
+        @media (max-width: 640px) {
+            .floating-btn {
+                width: 60px;
+                height: 60px;
+            }
+            .floating-btn svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- FLOATING CONTACT BUTTONS -->
+    <div class="floating-buttons" id="floatingButtons">
+        <a href="tel:7025788533" class="floating-btn" aria-label="Call Us">
+            <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.97.97 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.57c.27-.22.36-.59.24-1.01-.37-1.11-.56-2.3-.56-3.53A1 1 0 0 0 6.01 3H4c-1.1 0-2 .9-2 2 0 9.39 7.61 17 17 17 .55 0 1.05-.22 1.41-.59.37-.36.59-.86.59-1.41v-2.02c0-.55-.45-1-1-1z"/></svg>
+        </a>
+        <a href="https://lasvegaspartybuses.com/contact/" class="floating-btn" aria-label="Contact Us">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+    </div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="glowing">Hoover Dam</h1>
+            <p>Experience the awe-inspiring Hoover Dam on a guided tour with <strong><a href="https://lasvegaspartybuses.com">Las Vegas Party Bus</a></strong>. Our tour is perfect for those who want to learn about the history of the dam while enjoying stunning views of the surrounding area. Here are some of the highlights of our <a href="#"><b>Hoover Dam Tour</b></a>:</p>
+        </div>
+    </section>
+
+    <!-- TOUR SECTIONS (alternating) -->
+    <section class="tour-section">
+        <div class="container">
+            <div class="section-grid reverse">
+                <div class="section-image">
+                    <div class="elementor-widget-image">
+                        <figure class="wp-caption image-frame">
+                            <img src="https://lasvegaspartybuses.com/wp-content/uploads/2022/08/hoover-dam-image.png" alt="Private Hoover Dam bus tour from Las Vegas with luxury transport to the dam and Lake Mead overlook.">
+                            <figcaption class="widget-image-caption">Private Hoover Dam bus tour from Las Vegas with luxury transport to the dam and Lake Mead overlook.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <h2 class="glowing">Overview of Hoover Dam</h2>
+                    <p>The Hoover Dam is a concrete arch-gravity dam in the Black Canyon of the Colorado River, on the border between the states of Nevada and Arizona. It was constructed during the Great Depression and was named after President Herbert Hoover. The dam was built to control flooding, provide irrigation water, and produce hydroelectric power for the region.</p>
+                    <a href="https://lasvegaspartybuses.com/contact/" class="btn-glow">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-section">
+        <div class="container">
+            <div class="section-grid">
+                <div class="section-image">
+                    <div class="elementor-widget-image">
+                        <figure class="wp-caption image-frame">
+                            <img src="https://lasvegaspartybuses.com/wp-content/uploads/2022/08/mount-charleston.png" alt="Mount Charleston group transportation and party bus rentals for snow trips, retreats, and scenic mountain drives.">
+                            <figcaption class="widget-image-caption">Mount Charleston group transportation and party bus rentals for snow trips, retreats, and scenic mountain drives.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <h2 class="glowing">Our Hoover Dam Tour</h2>
+                    <p>Our Hoover Dam Tour starts with a pick-up from your hotel in Las Vegas. You will be driven to the dam in our comfortable and luxurious party bus, which is equipped with air conditioning, music system, and a minibar. Upon arrival, you will have the opportunity to take a guided tour of the dam and learn about its history and engineering. The tour includes a visit to the power plant, where you will see the massive generators that produce electricity for the region.</p>
+                    <a href="https://lasvegaspartybuses.com/contact/" class="btn-glow">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-section">
+        <div class="container">
+            <div class="section-grid reverse">
+                <div class="section-image">
+                    <div class="elementor-widget-image">
+                        <figure class="wp-caption image-frame">
+                            <img src="https://lasvegaspartybuses.com/wp-content/uploads/2022/08/the-strip.png" alt="The ultimate Las Vegas Strip party bus tour stopping at the Welcome Sign, Bellagio Fountains, and Mirage Volcano.">
+                            <figcaption class="widget-image-caption">The ultimate Las Vegas Strip party bus tour stopping at the Welcome Sign, Bellagio Fountains, and Mirage Volcano.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <h2 class="glowing">Scenic Views</h2>
+                    <p>The Hoover Dam is situated in a scenic location, surrounded by mountains and the blue waters of Lake Mead. During our tour, you will have ample opportunities to take in the breathtaking views of the area and capture stunning photos.</p>
+                    <a href="https://lasvegaspartybuses.com/contact/" class="btn-glow">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-section">
+        <div class="container">
+            <div class="section-grid">
+                <div class="section-image">
+                    <div class="elementor-widget-image">
+                        <figure class="wp-caption image-frame">
+                            <img src="https://lasvegaspartybuses.com/wp-content/uploads/2022/08/red-rock.png" alt="Red Rock Canyon private bus tours offering scenic drives through the conservation area for hiking and photography groups.">
+                            <figcaption class="widget-image-caption">Red Rock Canyon private bus tours offering scenic drives through the conservation area for hiking and photography groups.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <h2 class="glowing">Memorable Experience</h2>
+                    <p>Our Hoover Dam Tour is a memorable experience that you will cherish for a lifetime. The tour is designed to be informative, entertaining, and fun. Our knowledgeable tour guides will provide you with fascinating facts and stories about the dam and the surrounding area.</p>
+                    <a href="https://lasvegaspartybuses.com/contact/" class="btn-glow">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-section">
+        <div class="container">
+            <div class="section-grid reverse">
+                <div class="section-image">
+                    <div class="elementor-widget-image">
+                        <figure class="wp-caption image-frame">
+                            <img src="https://lasvegaspartybuses.com/wp-content/uploads/2022/08/seven-magic.png" alt="Seven Magic Mountains private tours via party bus for the perfect group photo op at the colorful desert art installation.">
+                            <figcaption class="widget-image-caption">Seven Magic Mountains private tours via party bus for the perfect group photo op at the colorful desert art installation.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <h2 class="glowing">Party Bus Experience</h2>
+                    <p>Our party bus is not your typical tour bus. It is a luxurious and spacious vehicle that can accommodate up to 30 passengers. It is equipped with comfortable seating, LED lighting, music system, and a minibar. Our party bus is perfect for those who want to travel in style and have fun.</p>
+                    <a href="https://lasvegaspartybuses.com/contact/" class="btn-glow">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-section">
+        <div class="container">
+            <div class="section-grid">
+                <div class="section-image">
+                    <div class="elementor-widget-image">
+                        <figure class="wp-caption image-frame">
+                            <img src="https://lasvegaspartybuses.com/wp-content/uploads/2022/08/las-vegas-cannabis.png" alt="Las Vegas cannabis tours visiting top-rated dispensaries and grow houses in a luxury, 420-friendly party bus environment.">
+                            <figcaption class="widget-image-caption">Las Vegas cannabis tours visiting top-rated dispensaries and grow houses in a luxury, 420-friendly party bus environment.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <h2 class="glowing">Safety First</h2>
+                    <p>At Las Vegas Party Bus, we prioritize the safety of our passengers. Our party bus is regularly maintained to ensure that it is in top condition. We also have experienced and licensed drivers who will take you to your destination safely.</p>
+                    <a href="https://lasvegaspartybuses.com/contact/" class="btn-glow">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-section">
+        <div class="container">
+            <div class="section-grid reverse">
+                <div class="section-image">
+                    <div class="elementor-widget-image">
+                        <figure class="wp-caption image-frame">
+                            <img src="https://lasvegaspartybuses.com/wp-content/uploads/2022/08/winery.png" alt="Pahrump Valley winery tours from Las Vegas providing private group tasting trips and luxury party bus transportation.">
+                            <figcaption class="widget-image-caption">Pahrump Valley winery tours from Las Vegas providing private group tasting trips and luxury party bus transportation.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <h2 class="glowing">Affordable Tour</h2>
+                    <p>Our Hoover Dam Tour is affordable and offers great value for money. We have priced our tour competitively to ensure that everyone can enjoy this amazing experience.</p>
+                    <a href="https://lasvegaspartybuses.com/contact/" class="btn-glow">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tour-section">
+        <div class="container">
+            <div class="section-grid">
+                <div class="section-image">
+                    <div class="elementor-widget-image">
+                        <figure class="wp-caption image-frame">
+                            <img src="https://lasvegaspartybuses.com/wp-content/uploads/2022/08/winery.png" alt="Pahrump Valley winery tours from Las Vegas providing private group tasting trips and luxury party bus transportation.">
+                            <figcaption class="widget-image-caption">Pahrump Valley winery tours from Las Vegas providing private group tasting trips and luxury party bus transportation.</figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <h2 class="glowing">Conclusion</h2>
+                    <p>The Hoover Dam Tour is a must-see attraction for anyone visiting Las Vegas. It is a testament to American engineering and ingenuity and is a marvel to behold. At Las Vegas Party Bus, we offer a comfortable and enjoyable way to experience the dam. Book your tour with us today and create memories that will last a lifetime.</p>
+                    <a href="https://lasvegaspartybuses.com/contact/" class="btn-glow">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESERVATION SECTION (rebuilt from JSON) -->
+    <section class="las-vegas-reservation">
+        <div class="background-overlay"></div>
+        <div class="container">
+            <div class="reservation-row">
+                <div class="reservation-col-left">
+                    <div class="reservation-content">
+                        <h2>Las Vegas Party Bus</h2>
+                        <h3>Make a reservation today</h3>
+                        <a href="https://lasvegaspartybuses.com/contact/" class="btn-reservation">MAKE A RESERVATION</a>
+                    </div>
+                </div>
+                <div class="reservation-col-right"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION (black background, white text) -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions About Our Private Las Vegas Party Bus Tours</h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>What is the difference between a private party bus tour and a public sightseeing bus?</h4>
+                    <div class="faq-divider"></div>
+                    <p>Unlike public tours where you share a crowded coach with strangers on a rigid schedule, our Las Vegas party bus tours are 100% private. You get the entire vehicle for your group, meaning you control the music, the itinerary, and the vibe. Plus, our fleet features luxury amenities like leather seating, LED lighting, and premium sound systems that standard tour buses simply don't offer.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><b>Can we drink alcohol on the tour bus?</b></h4>
+                    <div class="faq-divider"></div>
+                    <p>Yes! One of the biggest advantages of our private bus tours in Las Vegas is that they are BYOB (Bring Your Own Beverage). We provide the coolers, ice, and cup holders; you bring the drinks. Please note that while alcohol is allowed on board, passengers must be 21+ to consume it & have valid identification.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><b>Do you pick us up from our hotel?</b></h4>
+                    <div class="faq-divider"></div>
+                    <p>Absolutely. We provide door-to-door private sightseeing charters. We will pick your group up from any hotel lobby on the Las Vegas Strip, Downtown Fremont Street, or any residential address in the Las Vegas Valley. We can also drop you off at a different location, such as a restaurant or nightclub, after the tour concludes.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><b>Can we customize our tour stops?</b></h4>
+                    <div class="faq-divider"></div>
+                    <p>Yes. Whether you want to spend extra time taking photos at the Seven Magic Mountains, grab a quick snack during a Red Rock Canyon tour, or add a dispensary stop to your itinerary, we are flexible. Our chauffeurs work with you to ensure you see exactly what you want, on your timeline.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><b>How long are the tours to Hoover Dam and Red Rock Canyon?</b></h4>
+                    <div class="faq-divider"></div>
+                    <p>We recommend booking at least 4 to 5 hours for day trips like our Hoover Dam private bus tours or Red Rock Canyon sightseeing charters. This accounts for travel time and ensures you have plenty of time to explore the landmarks without feeling rushed. Las Vegas Strip tours are typically booked in 3-hour or 4-hour blocks.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><b>Are your cannabis tours 420-friendly?</b></h4>
+                    <div class="faq-divider"></div>
+                    <p>Yes. Our Las Vegas cannabis dispensary tours are designed for enthusiasts. We take you to premier dispensaries and cultivation facilities. While consumption is generally not permitted <i>while driving</i> due to state laws, we can facilitate stops at legal consumption lounges or private venues as part of your package.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><b>Do you offer tours for large corporate groups?</b></h4>
+                    <div class="faq-divider"></div>
+                    <p>Yes. We specialize in Las Vegas group transportation for corporate events. We can coordinate multiple vehicles to transport hundreds of employees for team-building excursions to Mount Charleston, Pahrump Valley Winery, or city sightseeing tours.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><b>Can we get out and walk on the Hoover Dam or the bridge?</b></h4>
+                    <div class="faq-divider"></div>
+                    <p>Yes. Unlike "express" public shuttles that often just do a slow drive-by, our Hoover Dam private bus tours give you the freedom to explore. We can park the vehicle so your group can walk across the dam itself or stroll onto the Mike O'Callaghan–Pat Tillman Memorial Bridge for that iconic photo of the dam from above. Just let your chauffeur know your preference!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Floating buttons visibility (unchanged)
+        (function() {
+            const floating = document.getElementById('floatingButtons');
+            if (!floating) return;
+            let timeout;
+            const show = () => floating.classList.add('visible');
+            const hide = () => floating.classList.remove('visible');
+
+            window.addEventListener('scroll', () => {
+                clearTimeout(timeout);
+                if (floating.classList.contains('visible')) hide();
+                timeout = setTimeout(show, 500);
+            });
+
+            document.addEventListener('click', (e) => {
+                if (floating.classList.contains('visible') && !floating.contains(e.target)) {
+                    hide();
+                }
+            });
+
+            setTimeout(() => {
+                if (window.scrollY === 0) show();
+            }, 9000);
+        })();
+
+        // Mobile caption – scroll‑based trigger (fast fade‑in / slow fade‑out)
+        function checkMobileCaptions() {
+            if (window.innerWidth >= 768) return;
+
+            const captions = document.querySelectorAll('.elementor-widget-image');
+            const windowHeight = window.innerHeight;
+            const middle = windowHeight / 2;
+
+            captions.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const imageTop = rect.top;
+                const imageBottom = rect.bottom;
+
+                if (imageBottom > 0 && imageTop < windowHeight && imageTop >= middle) {
+                    el.classList.add('mobile-visible');
+                } else {
+                    el.classList.remove('mobile-visible');
+                }
+            });
+        }
+
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    checkMobileCaptions();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        window.addEventListener('load', checkMobileCaptions);
+        window.addEventListener('resize', checkMobileCaptions);
+    </script>
+</body>
+</html>
