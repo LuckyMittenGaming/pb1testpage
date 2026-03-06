@@ -34,7 +34,7 @@
         .container {
             max-width: 100%;
             margin: 0 auto;
-            padding: 0 30px;
+            padding: 10px;
         }
 
         /* ----- GLOW EFFECT FOR HEADINGS ----- */
@@ -183,7 +183,7 @@
         }
 
         .section-content h2 {
-            font-size: 56px;
+            font-size: 2.5rem;
             margin-bottom: 20px;
             line-height: 1.3;
         }
@@ -326,18 +326,18 @@
 
             .reservation-col-right {
                 padding: 0; /* reset */
-                min-height: 250px;
+                min-height: 200px;
                 margin: 0 0 30px 0; /* margin_tablet on column? actually column had margin 0, but we add space */
             }
 
             .reservation-content h2 {
                 font-size: 40px; /* from mobile, but tablet not specified; we use mobile size */
-                line-height: 65px;
+                line-height: 35px;
             }
 
             .reservation-content h3 {
                 font-size: 25px; /* tablet size from JSON typography_font_size_tablet: 25 */
-                line-height: 31px;
+                line-height: 11px;
                 margin-top: 10px; /* from _margin_tablet top 10 */
             }
         }
@@ -350,11 +350,13 @@
             .reservation-col-right {
                 min-height: 200px;
                 margin-top: 30px; /* margin_mobile on column was 30 top */
+                margin-bottom: -30px;
+                margin-top: -30px;
             }
 
             .reservation-content h2 {
                 font-size: 30px; /* mobile size from JSON */
-                line-height: 65px;
+                line-height: 35px;
             }
 
             .reservation-content h3 {
@@ -793,8 +795,4 @@
         window.addEventListener('resize', checkMobileCaptions);
     </script>
 </body>
-
 </html>
-
-
-
