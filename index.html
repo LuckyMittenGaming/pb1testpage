@@ -91,7 +91,7 @@
         .hero p {
             max-width: 800px;
             margin: 0 auto;
-            color: #ddd;
+            color: #ffffff;
             font-size: 17px;
             margin-bottom: -30px;
         }
@@ -189,7 +189,7 @@
         }
 
         .section-content p {
-            color: #ddd;
+            color: #ffffff;
             margin-bottom: 30px;
             font-size: 18px;
         }
@@ -203,7 +203,7 @@
             }
             .hero p,
             .section-content p {
-                font-size: 17px;
+                font-size: 19px;
             }
         }
         @media (max-width: 767px) {
@@ -241,6 +241,16 @@
     .section-content p {
         text-align: left;
     }
+          /* All text links (excluding buttons) */
+a:not([class*="btn"]) {
+    color: #E33EE1;           /* your desired color */
+    transition: color 0.3s ease;
+}
+
+a:not([class*="btn"]):hover {
+    color: #ffffff;           /* optional hover color */
+    text-decoration: underline;
+}
 }
 
         /* ----- RESERVATION SECTION (rebuilt from JSON) ----- */
