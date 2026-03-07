@@ -257,6 +257,20 @@ a:not([class*="btn"]):hover {
     text-decoration: underline;
 }
 }
+      /* Mobile (up to 768px) – use existing media query */
+@media (max-width: 768px) {
+    .section-content h2 {
+        font-size: 40px;
+    }
+    /* other mobile styles... */
+}
+
+/* Desktop override – adjust the min-width as needed */
+@media (min-width: 1200px) {
+    .section-content h2 {
+        font-size: 40px;   /* new desktop size */
+    }
+}
 
         /* ----- RESERVATION SECTION (rebuilt from JSON) ----- */
         .las-vegas-reservation {
